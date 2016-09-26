@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="es" ng-app="SmartAngleApp">
+<head>
+    <link rel="icon" type="image/png" href="Content/SmartAngularIcon.png" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SmartAngle</title>
+    <meta charset="utf-8" />
+    <script src="Scripts/jquery-1.9.1.js"></script>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+
+    <script src="Scripts/SmartAngleApp.js"></script>
+
+    <script src="Scripts/loginController/loginController.js"></script>
+    <script src="Scripts/crearUsuarioController/crearUsuarioController.js"></script>
+    <script src="Scripts/administracionUsuario/administrarUsuarioController.js"></script>
+    <script src="Scripts/crearDispositivoController/crearDispositivoController.js"></script>
+    <script src="Scripts/mostrarDispositivos/mostrarDispositivosController.js"></script>
+    <script src="Scripts/barraSuperiorController/barraSuperiorController.js"></script>
+    <base href="/">
+</head>
+<body>
+    <div ng-include src=" 'barraSuperior.html' "></div>
+    <div ng-view>
+    </div>
+
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/bootstrap.js"></script>
+</body>
+
+</html>
