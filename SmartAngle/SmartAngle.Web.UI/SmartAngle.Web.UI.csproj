@@ -70,12 +70,18 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\logoSmartAngle.png" />
+    <Content Include="Content\SmartAngleLogo.png" />
+    <Content Include="Content\SmartAngularIcon.png" />
+    <Content Include="createUser.html" />
+    <Content Include="dashboard.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="home.html" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
     <Content Include="Scripts\angular-route.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Scripts\controllers\loginController.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -110,7 +116,7 @@
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
-    <Content Include="Scripts\login.html" />
+    <Content Include="login.html" />
     <Content Include="Scripts\SmartAngleApp.js" />
     <Content Include="Web.config" />
   </ItemGroup>

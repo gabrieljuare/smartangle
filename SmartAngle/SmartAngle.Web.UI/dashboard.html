@@ -1,0 +1,9 @@
+﻿<div ng-show="loggeado">
+    <h1 class="text-center">Panel de Control</h1><br />
+    <div ng-include src=" 'detallesDeUsuario' "> </div>
+    <h2>Agregar Dispositivo</h2>
+    <div ng-include src=" 'agregarDispositivo.html' "></div>
+    <h2>Dispositivos</h2>
+
+    <div ng-include src="'dispositivos.html'" data-ng-controller="mostrarDispositivosController"></div>
+</div>

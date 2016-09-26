@@ -7,7 +7,7 @@
 smartAngleApp.config(['$routeProvider', '$locationProvider',
      function ($routeProvider, $locationProvider, $rootScope, $location) {
         $routeProvider.when('/', {
-            templateUrl: '/inicio.html'
+            templateUrl: '/home.html'
         }).when('/login', {
             templateUrl: '/login.html'
         }).when('/signUp', {
