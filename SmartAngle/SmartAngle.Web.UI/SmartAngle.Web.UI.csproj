@@ -110,6 +110,7 @@
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\login.html" />
     <Content Include="Scripts\SmartAngleApp.js" />
     <Content Include="Web.config" />
   </ItemGroup>

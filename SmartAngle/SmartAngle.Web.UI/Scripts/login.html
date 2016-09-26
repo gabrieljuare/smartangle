@@ -1,0 +1,36 @@
+﻿<div class="container">
+    <p><br /></p>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="page-header">
+                        <h3>Ingresar</h3>
+                    </div>
+                    <form ng-controller="loginController">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                <input ng-model="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Ingrese su Email" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Clave</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-star"></span></span>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="clave" />
+                            </div>
+                        </div>
+                        <hr />
+                        <a type="button" href="#/" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>Atras</a>
+                        <a ng-click="submit()" class="btn btn-primary"><span class="glyphicon glyphicon-lock"></span>Login</a><br /><br />
+                        <a href="#/crearUsuario" class="btn btn-primary"><span class="glyphicon glyphicon-book" "></span> Crear nuevo usuario</a>
+                        <p><br /></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
