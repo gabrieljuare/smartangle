@@ -12,6 +12,17 @@ namespace SmartAngle.Web.API.Controllers
     public class DeviceTypeController : ApiController
     {
         private IDeviceTypeService deviceTypeService;
+
+        public DeviceTypeController()
+        {
+            deviceTypeService = new DeviceTypeService();
+        }
+
+        public DeviceTypeController(IDeviceTypeService service)
+        {
+            deviceTypeService = service;
+        }
+
         public HttpResponseMessage Get()
         {
             List<DeviceType> deviceTypes = new List<DeviceType>();
@@ -45,9 +56,5 @@ namespace SmartAngle.Web.API.Controllers
 
         }
 
-        private User GetUserFromTicket()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

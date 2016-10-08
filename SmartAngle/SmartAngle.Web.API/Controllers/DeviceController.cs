@@ -1,4 +1,5 @@
-﻿using SmartAngle.Data.Entities;
+﻿using Microsoft.AspNet.Identity;
+using SmartAngle.Data.Entities;
 using SmartAngle.Web.Services;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,21 @@ namespace SmartAngle.Web.API.Controllers
     public class DeviceController : ApiController
     {
 
-        IDeviceService deviceService;
+        private IUserService userService;
+        private IDeviceService deviceService;
+
+        public DeviceController()
+        {
+            userService = new UserService();
+            deviceService = new DeviceService();
+        }
+
+        public DeviceController(IUserService _userService, IDeviceService _deviceService)
+        {
+            userService = _userService;
+            deviceService = _deviceService;
+        }
+
         // GET api/dispositivo
         [HttpGet]
         [Route("")]
@@ -33,7 +48,7 @@ namespace SmartAngle.Web.API.Controllers
             }
         }
 
-        
+
         // GET api/dispositivo/5
         [HttpGet]
         [Route("api/dispositivo/{id}")]
@@ -69,7 +84,7 @@ namespace SmartAngle.Web.API.Controllers
                 return Request.CreateResponse(HttpStatusCode.NotAcceptable, ex.Message);
             }
         }
-        
+
         private void SaveImageOfDevice(Device device)
         {
             try
@@ -127,10 +142,11 @@ namespace SmartAngle.Web.API.Controllers
                 return Request.CreateResponse(HttpStatusCode.NotModified, ex.Message);
             }
         }
-        
+
         private User GetUserFromTicket()
         {
-            throw new NotImplementedException();
+            Guid idFromToken = new Guid(RequestContext.Principal.Identity.GetUserId());
+            return userService.GetUserById(idFromToken);
         }
 
     }

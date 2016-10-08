@@ -1,4 +1,5 @@
-﻿using SmartAngle.Data.Entities;
+﻿using Microsoft.AspNet.Identity;
+using SmartAngle.Data.Entities;
 using SmartAngle.Web.Services;
 using System;
 using System.Collections.Generic;
@@ -9,24 +10,29 @@ using System.Web.Http;
 
 namespace SmartAngle.Web.API.Controllers
 {
+    [Authorize]
     public class UsersController : ApiController
     {
-        IUserService service;
+        IUserService userService;
+        public UsersController()
+        {
+            userService = new UserService();
+        }
         public UsersController(IUserService service)
         {
-            this.service = service;
+            this.userService = service;
         }
 
         [HttpPost]
         [Route("api/usuario")]
         public HttpResponseMessage PutUser([FromBody]User userToUpdate)
         {
-            Guid userId = GetUserFromTicket();
+            Guid userId = GetUserIdFromToken();
             try
             {
                 userToUpdate.Id = userId;
-                service.UpdateUser(userToUpdate);
-                User updatedUser = service.GetUserById(userId);
+                userService.UpdateUser(userToUpdate);
+                User updatedUser = userService.GetUserById(userId);
                 return Request.CreateResponse(HttpStatusCode.Created, updatedUser);
             }
             catch (Exception ex)
@@ -35,9 +41,9 @@ namespace SmartAngle.Web.API.Controllers
             }
         }
 
-        private Guid GetUserFromTicket()
+        private Guid GetUserIdFromToken()
         {
-            throw new NotImplementedException();
+            return new Guid(RequestContext.Principal.Identity.GetUserId());
         }
     }
 }

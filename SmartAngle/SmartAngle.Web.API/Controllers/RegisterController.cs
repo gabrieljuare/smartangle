@@ -1,4 +1,5 @@
-﻿using SmartAngle.Data.Entities;
+﻿using Microsoft.AspNet.Identity;
+using SmartAngle.Data.Entities;
 using SmartAngle.Web.Services;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,26 @@ using System.Web.Http;
 
 namespace SmartAngle.Web.API.Controllers
 {
+    [Authorize]
     public class RegisterController : ApiController
     {
+        private IUserService userService;
+        private IDeviceService deviceService;
         private IRegisterService registerService;
+
+        public RegisterController()
+        {
+            userService = new UserService();
+            deviceService = new DeviceService();
+            registerService = new RegisterService();
+        }
+
+        public RegisterController(IUserService _userService,
+                                    IDeviceService _deviceService,
+                                    IRegisterService _registerService)
+        {
+            registerService = _registerService;
+        }
 
         // GET api/registro
         [HttpGet]
@@ -170,7 +188,8 @@ namespace SmartAngle.Web.API.Controllers
 
         private User GetUserFromTicket()
         {
-            throw new NotImplementedException();
+            Guid idFromToken = new Guid(RequestContext.Principal.Identity.GetUserId());
+            return userService.GetUserById(idFromToken);
         }
 
     }
