@@ -12,6 +12,7 @@ namespace SmartAngle.Data.Entities
         [Key]
         public Guid Id { get; set; }
         public string Name { get; set; }
+        public string ImageUrl { get; set; }
         public virtual DeviceType DeviceType { get; set; } 
         public virtual List<Register> Registers { get; set; }
 

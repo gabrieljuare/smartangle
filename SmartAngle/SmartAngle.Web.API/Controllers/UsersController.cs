@@ -19,18 +19,25 @@ namespace SmartAngle.Web.API.Controllers
 
         [HttpPost]
         [Route("api/usuario")]
-        public HttpResponseMessage CrearUsuario([FromBody]User user)
+        public HttpResponseMessage PutUser([FromBody]User userToUpdate)
         {
+            Guid userId = GetUserFromTicket();
             try
             {
-                var newId = service.CreateUser(user);
-                return Request.CreateResponse(HttpStatusCode.Created, newId);
+                userToUpdate.Id = userId;
+                service.UpdateUser(userToUpdate);
+                User updatedUser = service.GetUserById(userId);
+                return Request.CreateResponse(HttpStatusCode.Created, updatedUser);
             }
-            catch (Exception exU)
+            catch (Exception ex)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Error en el servidor. Estamos trabajando para solucionar inconvenientes.");
+                return Request.CreateErrorResponse(HttpStatusCode.NotModified, ex.Message);
             }
         }
 
+        private Guid GetUserFromTicket()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace SmartAngle.Web.API.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Smart Angle";
 
             return View();
         }
