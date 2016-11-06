@@ -4,39 +4,46 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SmartAngle.Data.Entities;
+using SmartAngle.Data.Repository;
 
 namespace SmartAngle.Web.Services
 {
     public class DeviceService : IDeviceService
     {
+        private IUnitOfWork unitOfWork;
         public DeviceService()
         {
-
+            unitOfWork = new UnitOfWork();
         }
 
-        public Guid AddDevice(Guid id, Device deviceToAdd)
+        public Guid AddDevice(Guid userId, Device deviceToAdd)
         {
-            throw new NotImplementedException();
+            deviceToAdd.Id = Guid.NewGuid();
+            deviceToAdd.UserId = userId;
+            unitOfWork.DeviceRepository.Insert(deviceToAdd);
+            return deviceToAdd.Id;
         }
 
         public void DeleteDevice(Guid deviceId)
         {
-            throw new NotImplementedException();
+            Device deviceToDelete = unitOfWork.DeviceRepository.GetByID(deviceId);
+            unitOfWork.DeviceRepository.Delete(deviceToDelete);
         }
 
         public List<Device> GetAllDevices(Guid id)
         {
-            throw new NotImplementedException();
+            return unitOfWork.UserRepository.GetByID(id).Devices;
         }
 
         public Device GetDevice(Guid id)
         {
-            throw new NotImplementedException();
+            return unitOfWork.DeviceRepository.GetByID(id);
         }
 
         public void UpdateDevice(Guid deviceId, Device deviceToUpdate)
         {
-            throw new NotImplementedException();
+            //TODO: Validations
+            unitOfWork.DeviceRepository.Update(deviceToUpdate);
         }
     }
 }

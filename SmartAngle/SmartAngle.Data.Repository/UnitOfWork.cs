@@ -24,6 +24,11 @@ namespace SmartAngle.Data.Repository
             this.context = context;
         }
 
+        public UnitOfWork()
+        {
+            context = new SmartAngleContext();
+        }
+
         public IRepository<User> UserRepository
         {
             get

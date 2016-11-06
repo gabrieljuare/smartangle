@@ -6,8 +6,8 @@ smartAngleApp.controller('loginController', function ($scope, $location, $rootSc
         var clave = $scope.clave;
         var email = $scope.email;
         var solicitudLogin = {
-            method: "GET",
-            url: $rootScope.SmartApiUri + '/api/usuario/autenticacion?login=true',
+            method: "¨POST",
+            url: $rootScope.SmartApiUri + '/token',
             headers: {
                 'Content-Type': "application/json",
                 'email': email,

@@ -12,6 +12,6 @@ namespace SmartAngle.Data.Entities
         public string UserName { get; set; }
         public string Email { get; set; }
         public string EncryptedPassword { get; set; }
-        public virtual List<Device> Dispositivos { get; set; }
+        public virtual List<Device> Devices { get; set; }
     }
 }
